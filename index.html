@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>SAMEEM</title>
+<link rel="icon" type="image/png" href="images/logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors:{
+primary:"#ECBD60"
+}
+}
+}
+}
+</script>
+</head>
+
+<body class="bg-white text-gray-800">
+
+
+<header class="main-header">
+
+<div class="header-container">
+
+<img src="images/logo2.png" class="h-10" alt="logo">
+
+<nav class="nav-menu      hidden lg:flex gap-10 text-white text-sm">
+
+<a href="index.html" class="nav-link active">الرئيسية</a>
+<a href="weare.html" class="nav-link">من نحن</a>
+<a href="services.html" class="nav-link">الخدمات</a>
+<a href="windo.html" class="nav-link">المشاريع</a>
+<a href="contactus.html" class="nav-link">تواصل معنا</a>
+
+</nav>
+
+<a href="contactus.html" class="hidden lg:block bg-primary text-black px-6 py-2 rounded-full text-sm">
+احجز استشارتك
+</a>
+
+<button id="menuBtn" class="lg:hidden text-white text-2xl">
+☰
+</button>
+
+</div>
+
+</header>
+
+
+
+<div id="mobileMenu" class="fixed inset-0 bg-black text-white hidden z-50">
+
+<div class="flex justify-between items-center p-6">
+
+<img src="images/logo2.png" class="h-8">
+
+<button id="closeMenu" class="text-3xl">×</button>
+
+</div>
+
+<nav class="flex flex-col items-center gap-8 mt-20 text-lg">
+
+<a href="index.html">الرئيسية</a>
+<a href="weare.html">من نحن</a>
+<a href="services.html">الخدمات</a>
+<a href="windo.html">المشاريع</a>
+<a href="contactus.html">تواصل معنا</a>
+
+</nav>
+
+</div>
+
+
+
+<section class="hero-slider relative h-screen overflow-hidden">
+
+<div class="slides">
+
+<img src="images/Header 1.png" class="slide active absolute inset-0 w-full h-full object-cover">
+
+<img src="images/Header 1.png" class="slide absolute inset-0 w-full h-full object-cover">
+
+<img src="images/Header 1.png" class="slide absolute inset-0 w-full h-full object-cover">
+
+<img src="images/Header 1.png" class="slide absolute inset-0 w-full h-full object-cover">
+
+</div>
+
+
+<div class="absolute inset-0 hero-overlay flex items-center justify-center text-center">
+
+<div class="text-white max-w-xl px-6 hero-content">
+
+<h1 class="SAMEEM">
+SAMEEM
+</h1>
+
+<h2 class="text-[46px] mb-4">
+عزل يفوق التوقعات
+<br>
+هدوء منزلك يبدأ من صميم
+</h2>
+
+<p class="text-gra mb-8 text-[12px]">
+الحل الأمثل لشبابيك وأبواب الـ UPVC في دمياط الجديدة. عزل حراري، صوتي، وتصميمات عصرية تدوم طويلاً.
+</p>
+
+<div class="flex justify-center gap-4">
+
+<a href="contactus.html" class="bg-primary text-black px-6 py-3 rounded-full">
+مقايسة مجانية
+</a>
+
+<a href="windo.html" class="bg-white text-black px-6 py-3 rounded-full">
+تصفح أعمالنا
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<button id="prev" class="slider-arrow left-arrow">
+❮
+</button>
+
+<button id="next" class="slider-arrow right-arrow">
+❯
+</button>
+
+
+
+<div class="slider-dots">
+
+<span class="dot active"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+<span class="dot"></span>
+
+</div>
+
+</section>
+
+
+
+<section class="py-28">
+
+<div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+
+<div>
+
+<span class="we-are     px-4 py-1  text-sm">
+من نحن
+</span>
+
+<h2 class="text-3xl font-bold mt-4 mb-4">
+صميم حيث تجتمع المتانة مع الفخامة
+</h2>
+
+<p class="text-gray-500 leading-loose mb-6  w-[85%]">
+
+في "صميم"، لا نقدم مجرد نوافذ، بل نصمم حلولاً ذكية تمنحك الراحة التي تستحقها. نحن متخصصون في تصنيع وتوريد أنظمة الـ UPVC المتطورة التي تواكب التوسع العمراني الحديث في دمياط الجديدة والمناطق المحيطة.
+
+</p>
+
+<a href="weare.html"
+class="inline-flex items-center gap-2 border border-primary text-[#2D2412] px-6 py-2 rounded-[10px] transition hover:bg-primary">
+عرض المزيد
+<span class="text-xl">
+←
+</span>
+</a>
+</div>
+
+<img src="images/Group 6356120.png" class="w-full">
+
+</div>
+
+</section>
+
+
+
+<section class="py-28">
+
+<div class="max-w-7xl mx-auto px-6 text-center">
+
+<span class="we-are     px-4 py-1  text-sm">
+لماذا  UPVC
+</span>
+
+<h2 class="text-[32px]  mt-5 mb-4">
+لماذا يتجه السوق إلى شبابيك UPVC؟
+</h2>
+
+<p class="w-[68%] mx-auto text-gray-500 leading-loose mb-16">
+
+مع التوسع العمراني السريع في المدن الجديدة وارتفاع أسعار الألوميتال، أصبح العملاء يبحثون عن حلول أكثر كفاءة في العزل الحراري والصوتي. وهنا ظهرت أنظمة UPVC كخيار يوفر الراحة داخل المنازل
+ ويقلل استهلاك الطاقة ويحافظ على جودة المعيشة.
+
+</p>
+
+<div class="why-upvc    ">
+
+<div class="allcart  grid md:grid-cols-4 gap-12">
+<div>
+
+<img src="images/icon1.png" class="mx-auto mb-4 h-14">
+
+<h3 class="font-semibold mb-2">
+عزل حراري عالي
+</h3>
+
+<p class="w-[55%] mx-auto text-sm text-gray-500">
+يحافظ على درجة الحرارة
+داخل المنزل طوال العام.
+</p>
+
+</div>
+
+
+<div>
+
+<img src="images/icon2.png" class="mx-auto mb-4 h-14">
+
+<h3 class="font-semibold mb-2">
+تقليل الضوضاء
+</h3>
+
+<p class="w-[55%] mx-auto  text-sm text-gray-500">
+يمنحك بيئة هادئة بعيدًا عن ضوضاء الشوارع.
+</p>
+
+</div>
+
+
+<div>
+
+<img src="images/icon3.png" class="mx-auto mb-4 h-14">
+
+<h3 class="font-semibold mb-2">
+مقاومة العوامل الجوية
+</h3>
+
+<p class="w-[55%]  mx-auto text-sm text-gray-500">
+يتحمل الرطوبة والأمطار ودرجات الحرارة المرتفعة .
+</p>
+
+</div>
+
+
+<div>
+
+<img src="images/icon4.png" class="mx-auto mb-4 h-14">
+
+<h3 class="font-semibold mb-2">
+عمر افتراضي طويل
+</h3>
+
+<p class="w-[55%]   mx-auto text-sm text-gray-500">
+خامات قوية تضمن أداءً ثابتًا لسنوات طويلة.
+</p>
+
+</div>
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<section class="py-28">
+
+<div class="max-w-7xl mx-auto px-6 text-center">
+
+<span class="we-are     px-4 py-1  text-sm">
+أنواع الشبابيك
+</span>
+
+<h2 class="text-[32px]  mt-5 mb-4">
+أنظمة شبابيك تناسب كل تصميم
+</h2>
+<p class="w-[85%] mx-auto text-gray-500 leading-loose mb-16">
+
+نقدم مجموعة متنوعة من أنظمة شبابيك UPVC المصممة لتناسب مختلف الاحتياجات المعمارية، مع تحقيق أفضل أداء في العزل والراحة داخل المباني.
+
+</p>
+
+<div class="grid md:grid-cols-4 gap-8">
+
+
+<div class="bg-white shadow hover:shadow-xl hover:-translate-y-2 transition rounded-xl overflow-hidden">
+
+<img src="images/windo1.png" class="w-full h-55">
+
+<div class="p-5">
+
+<h3 class="font-bold mb-2">Sliding Windows</h3>
+
+<p class="w-[80%]  m-auto text-sm text-gray-500 mb-4">
+تصميم عملي موفر للمساحة مع فتح وإغلاق سلس.
+</p>
+
+<a href="windo.html" class="inline-flex items-center gap-2 text-primary text-sm font-semibold">
+عرض المزيد
+<span class="text-primary text-base">←</span>
+</a>
+</div>
+</div>
+
+<div class="bg-white shadow hover:shadow-xl hover:-translate-y-2 transition rounded-xl overflow-hidden">
+
+<img src="images/windo2.png" class="w-full h-55">
+
+<div class="p-5">
+
+<h3 class="font-bold mb-2">Casement Windows</h3>
+
+<p class="w-[80%]  m-auto text-sm text-gray-500 mb-4">
+شباك يفتح بالكامل لتهوية قوية وعزل أفضل.
+</p>
+
+<a href="windo.html" class="inline-flex items-center gap-2 text-primary text-sm font-semibold">
+عرض المزيد
+<span class="text-primary text-base">←</span>
+</a>
+
+</div>
+
+</div>
+<div class="bg-white shadow hover:shadow-xl transition rounded-xl overflow-hidden">
+
+<img src="images/windo3.png" class="w-full h-55">
+
+<div class="p-5">
+
+<h3 class="font-bold mb-2">Tilt & Turn Windows</h3>
+
+<p class="w-[80%]  m-auto text-sm text-gray-500 mb-4">
+نظام ذكي يتيح فتحين مختلفين للتهوية الآمنة.
+</p>
+
+<a href="windo.html" class="inline-flex items-center gap-2 text-primary text-sm font-semibold">
+عرض المزيد
+<span class="text-primary text-base">←</span>
+</a>
+</div>
+</div>
+<div class="bg-white shadow hover:shadow-xl transition rounded-xl overflow-hidden">
+
+<img src="images/windo4.png" class="w-full h-55 ">
+
+<div class="p-5">
+
+<h3 class="font-bold mb-2">Fixed Windows</h3>
+
+<p class="w-[80%]  m-auto text-sm text-gray-500 mb-4">
+نافذة ثابتة تسمح بدخول الضوء مع عزل ممتاز.
+</p>
+<a href="windo.html" class="inline-flex items-center gap-2 text-primary text-sm font-semibold">
+عرض المزيد
+<span class="text-primary text-base">←</span>
+</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="transform-home">
+
+<div class="container">
+
+<div class="transform-content">
+
+<h2>     
+حوّل منزلك مع شبابيك 
+<br>
+UPVC العصرية
+</h2>
+
+<p   class="transform-homep">
+استمتع بعزل حراري وصوتي مثالي، تصميم عصري، وجودة تدوم لسنوات. اجعل كل نافذة تمنح منزلك راحة وأناقة لا مثيل لها!
+</p>
+
+<a href="#" class="gold-btn">
+احصل على استشارتك المجانية 
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+<section class="py-28">
+
+<div class="max-w-7xl mx-auto px-6 text-center">
+
+<div class="solutions-header">
+
+<span class="we-are     px-4 py-1  text-sm">
+من نخدم ؟
+</span>
+
+<h2 class="text-[32px]  mt-5 mb-4">
+حلول متكاملة للجميع
+</h2>
+<p class="w-[60%] mx-auto text-gray-600 leading-loose mb-16">
+نقدم حلول شبابيك وأبواب UPVC مصممة خصيصًا لتلبية احتياجات الأفراد، المقاولين، ومكاتب الديكور، مع التركيز 
+على الجودة، الأداء العالي، والدقة في التنفيذ.
+</p>
+
+</div>
+
+
+<div class="solutions-grid">
+
+<div class="solution-card">
+
+<img src="images/user1.png" alt="" class="m-auto w-[100px]  mb-[20px]">
+
+<h3 >
+الأفراد
+</h3>
+
+<p>
+تشطيب منزلك أو فيلتك بأعلى معايير الجودة والراحة، مع تصميم عصري يناسب كل المساحات.
+</p>
+
+</div>
+
+
+<div class="solution-card">
+
+<img src="images/user2.png" alt=""   class="m-auto w-[100px]  mb-[20px]">
+
+<h3>
+المقاولون والمطورون
+</h3>
+
+<p>
+توريد كميات كبيرة للمشاريع الكبرى مع الالتزام التام بالجدول الزمني ودقة التنفيذ لضمان سير العمل بسلاسة.
+</p>
+
+</div>
+
+
+<div class="solution-card">
+
+<img src="images/user3.png" alt=""  class="m-auto w-[100px]  mb-[20px]">
+
+<h3>
+ مكاتب الديكور
+</h3>
+
+<p>
+تنفيذ تصميمات خاصة تعكس الرؤية الجمالية للمهندس، مع التركيز على الجودة والتفاصيل الدقيقة لكل مشروع.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+<section class="py-28    process-section">
+   <div class="max-w-7xl mx-auto px-6 text-center"> 
+<span class="we-are     px-4 py-1  text-sm">
+خطوات العمل
+</span>
+
+<h2 class="text-[32px]  mt-5 mb-4">
+كيف نعمل في صميم
+</h2>
+<p class="w-[60%] mx-auto text-gray-600 leading-loose mb-16">
+نتبع خطوات واضحة تبدأ بالمعاينة والتصميم، ثم التصنيع الدقيق والتركيب الاحترافي لضمان أفضل نتيجة.
+</p>
+
+<div class="container process-grid">
+
+<div class="process-image">
+
+<img src="images/logo3.png" alt="">
+
+</div>
+
+
+<div class="process-steps">
+
+<div class="process-step">
+
+<div class="step-number">1</div>
+
+<div>
+
+<h3>معاينة الموقع</h3>
+
+
+</div>
+
+</div>
+
+
+<div class="process-step">
+
+<div class="step-number">2</div>
+
+<div>
+
+<h3>تحديد المقاسات والتصميم</h3>
+
+
+
+</div>
+
+</div>
+
+
+<div class="process-step">
+
+<div class="step-number">3</div>
+
+<div>
+
+<h3> التصنيع وفق المعايير</h3>
+
+
+
+</div>
+
+</div>
+
+
+<div class="process-step">
+
+<div class="step-number">4</div>
+
+<div>
+
+<h3>التركيب الاحترافي</h3>
+
+
+
+</div>
+
+</div>
+
+
+<div class="process-step">
+
+<div class="step-number">5</div>
+
+<div>
+
+<h3>التسليم وضمان الجودة</h3>
+
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+   
+
+<section class="video-section py-28">
+
+<div class="max-w-7xl mx-auto px-6 text-center">
+
+<div class="solutions-header">
+
+<span class="we-are px-4 py-1 text-sm">
+جولة داخل معرضنا
+</span>
+
+<h2 class="text-[32px] mt-5 mb-4">
+نصنع الفخامة… وننفذ التفاصيل
+</h2>
+
+<p class="w-[60%] mx-auto text-gray-600 leading-loose mb-16">
+شاهد خلال 30 ثانية كيف تضيف شبابيك UPVC لمسة عصرية وعزلًا مثاليًا يمنح منزلك الراحة والهدوء.
+</p>
+
+</div>
+
+</div>
+
+<div class="video-top-bg"></div>
+
+<div class="video-container">
+
+<video controls poster="images/video.png">
+<source src="videos/showroom.mp4" type="video/mp4">
+متصفحك لا يدعم تشغيل الفيديو
+</video>
+
+</div>
+
+</section>
+
+
+
+
+
+<section class="testimonials">
+ <div class="solutions-header">
+
+<span class="we-are px-4 py-1 text-sm">
+آراء العملاء
+</span>
+
+<h2 class="text-[32px] mt-5 mb-4">
+ماذا يقول عملاؤنا ؟
+</h2>
+
+<p class="w-[60%] mx-auto text-gray-600 leading-loose mb-16">
+ثقة عملائنا هي أكبر دليل على جودة خدماتنا.
+</p>
+
+</div>
+
+  <div class="testimonial-wrapper">
+    <button class="arrow left">&#10094;</button>
+
+    <div class="testimonial-container">
+      <div class="gold-shape"></div>
+
+      <div class="testimonial-slider">
+        <div class="slide active">
+          <div class="card">
+            <div class="avatar"><img src="images/user5.png"></div>
+            <h3>Mohamed Nasser</h3>
+            <span>UI | UX Designer</span>
+            <p>"كانت تجربة ممتازة من بداية التواصل وحتى الانتهاء من التركيب. فريق العمل كان متعاونًا جدًا وجودة الشبابيك واضحة."</p>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="card">
+            <div class="avatar"><img src="images/user5.png"></div>
+            <h3>Ahmed Ali</h3>
+            <span>Engineer</span>
+            <p>جودة رائعة وعزل صوتي ممتاز. فرق واضح داخل المنزل.</p>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="card">
+            <div class="avatar"><img src="images/user5.png"></div>
+            <h3>Sara Mohamed</h3>
+            <span>Architect</span>
+            <p>التصميم رائع والتركيب احترافي. أنصح بهم.</p>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="card">
+            <div class="avatar"><img src="images/user5.png"></div>
+            <h3>Fatma Hassan</h3>
+            <span>Project Manager</span>
+            <p>الخدمة ممتازة والنتيجة كانت أفضل من المتوقع. فريق محترف جدًا.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <button class="arrow right">&#10095;</button>
+  </div>
+</section>
+
+
+<footer class="footer">
+
+  <div class="footer-overlay"></div>
+
+  <div class="footer-container">
+
+    <div class="footer-col logo">
+    <img src="images/logo2.png" alt="ضميم Logo" class="footer-logo">
+  <p>تصميم UPVC – جودة، عزل، وتصميم عصري لمنزلك</p>
+
+    </div>
+
+   <div class="footer-col">
+  <h4>روابط سريعة</h4>
+
+  <ul>
+
+    <li>
+      <a href="index.html">الرئيسية</a>
+    </li>
+
+    <li>
+      <a href="weare.html">من نحن</a>
+    </li>
+
+    <li>
+      <a href="services.html">الخدمات</a>
+    </li>
+
+    <li>
+      <a href="windo.html">المشاريع</a>
+    </li>
+
+    <li>
+      <a href="contactus.html">تواصل معنا</a>
+    </li>
+
+  </ul>
+</div>
+
+    <div class="footer-col">
+      <h4>معلومات التواصل</h4>
+      <ul>
+        <li><img src="images/mobil2.png" alt="phone"> +20 010-000-0000</li>
+        <li><img src="images/mesage.png" alt="email"> لم يتم تحديده بعد</li>
+        <li><img src="images/location.png" alt="location"> دمياط الجديدة - شارع المرور</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+  
+
+    <div class="social">
+
+  <a href="https://www.facebook.com/" target="_blank">
+    <img src="images/facebok.png" alt="Facebook">
+  </a>
+
+  <a href="https://www.tiktok.com/" target="_blank">
+    <img src="images/tiktok.png" alt="TikTok">
+  </a>
+
+  <a href="https://www.linkedin.com/" target="_blank">
+    <img src="images/linked.png" alt="Linkedin">
+  </a>
+
+   <a href="https://www.whats.com/" target="_blank">
+    <img src="images/whats.png" alt="whats">
+  </a>
+  <a href="https://www.youtube.com/" target="_blank">
+    <img src="images/youtube.png" alt="YouTube">
+  </a>
+
+</div>
+<p class="rights">© 2026 UPVC صميم. جميع الحقوق محفوظة.</p>
+  </div>
+
+</footer>
+
+<script>
+const menuBtn = document.getElementById("menuBtn")
+const mobileMenu = document.getElementById("mobileMenu")
+const closeMenu = document.getElementById("closeMenu")
+
+menuBtn.onclick = () => mobileMenu.classList.remove("hidden")
+closeMenu.onclick = () => mobileMenu.classList.add("hidden")
+
+</script>
+<script src="script.js"></script>
+</body>
+</html>
