@@ -1,54 +1,51 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const slides = document.querySelectorAll(".hero-slider .slide");
+  const dots = document.querySelectorAll(".hero-slider .dot");
+  const title = document.getElementById("hero-title");
+  const desc = document.getElementById("hero-desc");
+  const nextBtn = document.getElementById("next");
+  const prevBtn = document.getElementById("prev");
+  let current = 0;
+
+  if (slides.length === 0) return; // Exit if no hero slider
+
+  function showSlide(index){
+    current = (index + slides.length) % slides.length;
+
+    slides.forEach((slide, i) => {
+      slide.classList.toggle("active", i === current);
+      slide.style.zIndex = i === current ? 1 : 0;
+    });
+
+    dots.forEach((dot, i) => dot.classList.toggle("active", i === current));
+
+    if (title) title.innerText = slides[current].dataset.title || "";
+    if (desc) desc.innerText = slides[current].dataset.desc || "";
+  }
+
+  if (nextBtn) nextBtn.addEventListener("click", () => showSlide(current + 1));
+  if (prevBtn) prevBtn.addEventListener("click", () => showSlide(current - 1));
+  dots.forEach((dot, i) => dot.addEventListener("click", () => showSlide(i)));
+
+  // auto loop سريع جدًا بدون شاشة بيضا
+  const autoSlide = setInterval(() => showSlide(current + 1), 3000);
+
+  showSlide(0); // عرض أول صورة فور التحميل
+});
 
 
-const slides = document.querySelectorAll(".slide")
-const dots = document.querySelectorAll(".dot")
 
-let index = 0
 
-function showSlide(i){
 
-slides.forEach(slide => slide.classList.remove("active"))
-dots.forEach(dot => dot.classList.remove("active"))
 
-slides[i].classList.add("active")
-dots[i].classList.add("active")
 
-}
 
-document.getElementById("next").onclick = ()=>{
 
-index++
 
-if(index >= slides.length){
-index = 0
-}
 
-showSlide(index)
 
-}
 
-document.getElementById("prev").onclick = ()=>{
 
-index--
-
-if(index < 0){
-index = slides.length - 1
-}
-
-showSlide(index)
-
-}
-
-dots.forEach((dot,i)=>{
-
-dot.onclick = ()=>{
-
-index = i
-showSlide(index)
-
-}
-
-})
 
 
 
@@ -120,6 +117,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let currentIndex = 0;
 
   function renderImages(category) {
+    if (!gallery) return;
     gallery.innerHTML = "";
     currentImages = imagesData[category];
 

@@ -12,7 +12,7 @@
 }
 
 body {
-  font-family:'Cairo',sans-serif;
+  font-family: 'Noto Kufi Arabic', sans-serif;
 }
 
 .main-header {
@@ -156,6 +156,7 @@ body {
   justify-content: center;
   padding: 20px;
   padding-top: 90px;
+  z-index: 2;
 }
 
 .hero-content {
@@ -284,10 +285,6 @@ body {
 
   .hero-content h2 {
     font-size: 24px;
-  }
-
-  .buttons {
-    flex-direction: column;
   }
 
   .btn {
