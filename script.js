@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const prevBtn = document.getElementById("prev");
   let current = 0;
 
-  if (slides.length === 0) return; // Exit if no hero slider
+  if (slides.length === 0) return; 
 
   function showSlide(index){
     current = (index + slides.length) % slides.length;
@@ -27,27 +27,10 @@ document.addEventListener("DOMContentLoaded", function () {
   if (prevBtn) prevBtn.addEventListener("click", () => showSlide(current - 1));
   dots.forEach((dot, i) => dot.addEventListener("click", () => showSlide(i)));
 
-  // auto loop سريع جدًا بدون شاشة بيضا
-  const autoSlide = setInterval(() => showSlide(current + 1), 3000);
+  const autoSlide = setInterval(() => showSlide(current + 1), 5000);
 
-  showSlide(0); // عرض أول صورة فور التحميل
+  showSlide(0); 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // customer section
@@ -94,19 +77,14 @@ document.addEventListener("DOMContentLoaded", () => {
     elements.forEach(el => observer.observe(el));
 
 
-
-
-    
-
-
 // windo page
 
     document.addEventListener("DOMContentLoaded", function () {
 
   const imagesData = {
-    sliding: ["images/fr9.png", "images/fr8.png", "images/fr7.png", "images/fr4.png", "images/fr5.png", "images/fr6.png"  , "images/fr3.png", "images/fr2.png", "images/fr1.png" ],
+    sliding: ["images/fr3.png", "images/fr2.png", "images/fr1.png", "images/fr4.png", "images/fr5.png", "images/fr6.png"  , "images/fr7.png", "images/fr8.png", "images/fr9.png", "images/fr11.png", "images/fr22.png", "images/fr33.png", "images/fr99.png"  ],
     casement: ["images/ca1.png" , "images/ca2.png", "images/ca3.png", "images/ca4.png", "images/ca5.png", "images/ca6.png", "images/ca7.png", "images/ca8.png", "images/ca9.png"],
-    tilt: ["images/ti1.png", "images/ti2.png", "images/ti3.png", "images/ti4.png", "images/ti5.png", "images/ti6.png", "images/ti7.png", "images/ti8.png", "images/ti9.png"],
+    tilt: ["images/ti1.png", "images/ti2.png", "images/ti3.png", "images/ti4.png", "images/ti5.png", "images/ti6.png", "images/ti7.png", "images/ti8.png", "images/ti9.png", "images/tii1.png", "images/tii2.png", "images/tii3.png"],
     fixed: ["images/fx1.png","images/fx2.png","images/fx3.png","images/fx4.png","images/fx5.png","images/fx6.png","images/fx7.png","images/fx8.png","images/fx9.png"]
   };
 
