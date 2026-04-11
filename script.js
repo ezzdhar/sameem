@@ -154,3 +154,73 @@ document.addEventListener("DOMContentLoaded", () => {
   renderImages("sliding");
 
     });
+
+// kitchen page gallery
+    document.addEventListener("DOMContentLoaded", function () {
+      if (!document.body.classList.contains("kitchen-page")) return;
+
+      const kitchenImages = [
+        "images/kit1.png",
+        "images/kit2.png",
+        "images/kit3.png",
+        "images/kit4.png",
+        "images/kit5.png",
+        "images/kit6.png",
+        "images/kit7.png",
+        "images/kit8.png",
+        "images/kit9.png"
+      ];
+
+      const gallery = document.getElementById("gallery");
+      const lightbox = document.getElementById("lightbox");
+      const lightboxImg = document.getElementById("lightboxImg");
+      let currentIndex = 0;
+
+      function renderKitchenGallery() {
+        if (!gallery) return;
+        gallery.innerHTML = "";
+
+        kitchenImages.forEach((src, index) => {
+          const div = document.createElement("div");
+          div.className = "overflow-hidden rounded-xl cursor-pointer";
+
+          div.innerHTML = `
+            <img src="${src}"
+                 class="w-full h-64 md:h-72 object-cover hover:scale-105 transition duration-300"
+                 onerror="this.src='https://via.placeholder.com/500x400?text=Image+Not+Found'">
+          `;
+
+          div.onclick = () => openLightbox(index);
+          gallery.appendChild(div);
+        });
+      }
+
+      function openLightbox(index) {
+        currentIndex = index;
+        lightboxImg.src = kitchenImages[currentIndex];
+        lightbox.classList.remove("hidden");
+        lightbox.classList.add("flex");
+      }
+
+      document.getElementById("close").onclick = () => {
+        lightbox.classList.add("hidden");
+      };
+
+      document.getElementById("next").onclick = () => {
+        currentIndex = (currentIndex + 1) % kitchenImages.length;
+        lightboxImg.src = kitchenImages[currentIndex];
+      };
+
+      document.getElementById("prev").onclick = () => {
+        currentIndex = (currentIndex - 1 + kitchenImages.length) % kitchenImages.length;
+        lightboxImg.src = kitchenImages[currentIndex];
+      };
+
+      lightbox.addEventListener("click", (event) => {
+        if (event.target === lightbox) {
+          lightbox.classList.add("hidden");
+        }
+      });
+
+      renderKitchenGallery();
+    });

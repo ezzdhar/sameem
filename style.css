@@ -413,6 +413,9 @@ body {
 @media(max-width:500px){
   .transform-home {height:320px;}
   .transform-content h2 {font-size:24px;}
+  .transform-content {
+    margin-top:-3rem;
+  }
 }
 
 .solutions-grid {
@@ -537,7 +540,17 @@ body {
   .process-step{justify-content:center;}
 }
 
-@media(max-width:500px){.process-content h2{font-size:26px;}}
+@media(max-width:500px){
+  .process-content h2{font-size:26px;
+  
+  }
+  .process-step p {
+    font-size: 11px;
+}
+.process-step h3 {
+  font-size:17px;
+}
+}
 
 .comfort-section {
   background-image:url("../images/banner3.png");
