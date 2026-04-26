@@ -78,8 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // windo page
-
-    document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function () {
 
   const imagesData = {
     sliding: ["images/fr3.png", "images/fr2.png", "images/fr1.png", "images/fr4.png", "images/fr5.png", "images/fr6.png"  , "images/fr7.png", "images/fr8.png", "images/fr9.png", "images/fr11.png", "images/fr22.png", "images/fr33.png", "images/fr99.png"  ],
@@ -93,6 +92,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   let currentImages = [];
   let currentIndex = 0;
+  let isLightboxOpen = false;
+  let touchStart = 0, touchEnd = 0;
 
   function renderImages(category) {
     if (!gallery) return;
@@ -128,32 +129,94 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const lightbox = document.getElementById("lightbox");
   const lightboxImg = document.getElementById("lightboxImg");
+  
+  // Create counter element if it doesn't exist
+  if (!document.querySelector(".lightbox-counter")) {
+    const counter = document.createElement("div");
+    counter.className = "lightbox-counter";
+    lightbox.appendChild(counter);
+  }
+  const counter = document.querySelector(".lightbox-counter");
+
+  function updateCounter() {
+    counter.textContent = `${currentIndex + 1} / ${currentImages.length}`;
+  }
 
   function openLightbox(index) {
     currentIndex = index;
+    isLightboxOpen = true;
     lightbox.classList.remove("hidden");
     lightbox.classList.add("flex");
     lightboxImg.src = currentImages[currentIndex];
+    updateCounter();
+    document.body.style.overflow = "hidden";
   }
 
-  document.getElementById("close").onclick = () => {
+  function closeLightbox() {
     lightbox.classList.add("hidden");
-  };
+    lightbox.classList.remove("flex");
+    isLightboxOpen = false;
+    document.body.style.overflow = "auto";
+  }
 
-  document.getElementById("next").onclick = () => {
+  function nextImage() {
     currentIndex = (currentIndex + 1) % currentImages.length;
     lightboxImg.src = currentImages[currentIndex];
-  };
+    updateCounter();
+  }
 
-  document.getElementById("prev").onclick = () => {
+  function prevImage() {
     currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
     lightboxImg.src = currentImages[currentIndex];
-  };
+    updateCounter();
+  }
 
+  document.getElementById("close").onclick = closeLightbox;
+  document.getElementById("next").onclick = nextImage;
+  document.getElementById("prev").onclick = prevImage;
+
+  // Keyboard navigation
+  document.addEventListener("keydown", (e) => {
+    if (!isLightboxOpen) return;
+    if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+      e.preventDefault();
+      nextImage();
+    } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+      e.preventDefault();
+      prevImage();
+    } else if (e.key === "Escape") {
+      e.preventDefault();
+      closeLightbox();
+    }
+  });
+
+  // Click on background to close
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+
+  // Touch/Swipe support for mobile
+  lightbox.addEventListener("touchstart", (e) => {
+    touchStart = e.changedTouches[0].screenX;
+  });
+
+  lightbox.addEventListener("touchend", (e) => {
+    touchEnd = e.changedTouches[0].screenX;
+    const diff = touchStart - touchEnd;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        nextImage();
+      } else {
+        prevImage();
+      }
+    }
+  });
 
   renderImages("sliding");
 
-    });
+});
 
 // kitchen page gallery
     document.addEventListener("DOMContentLoaded", function () {
@@ -175,6 +238,20 @@ document.addEventListener("DOMContentLoaded", () => {
       const lightbox = document.getElementById("lightbox");
       const lightboxImg = document.getElementById("lightboxImg");
       let currentIndex = 0;
+      let isLightboxOpen = false;
+      let touchStart = 0, touchEnd = 0;
+
+      // Create counter element if it doesn't exist
+      if (!document.querySelector(".lightbox-counter")) {
+        const counter = document.createElement("div");
+        counter.className = "lightbox-counter";
+        lightbox.appendChild(counter);
+      }
+      const counter = document.querySelector(".lightbox-counter");
+
+      function updateCounter() {
+        counter.textContent = `${currentIndex + 1} / ${kitchenImages.length}`;
+      }
 
       function renderKitchenGallery() {
         if (!gallery) return;
@@ -197,28 +274,75 @@ document.addEventListener("DOMContentLoaded", () => {
 
       function openLightbox(index) {
         currentIndex = index;
+        isLightboxOpen = true;
         lightboxImg.src = kitchenImages[currentIndex];
         lightbox.classList.remove("hidden");
         lightbox.classList.add("flex");
+        updateCounter();
+        document.body.style.overflow = "hidden";
       }
 
-      document.getElementById("close").onclick = () => {
+      function closeLightbox() {
         lightbox.classList.add("hidden");
-      };
+        lightbox.classList.remove("flex");
+        isLightboxOpen = false;
+        document.body.style.overflow = "auto";
+      }
 
-      document.getElementById("next").onclick = () => {
+      function nextImage() {
         currentIndex = (currentIndex + 1) % kitchenImages.length;
         lightboxImg.src = kitchenImages[currentIndex];
-      };
+        updateCounter();
+      }
 
-      document.getElementById("prev").onclick = () => {
+      function prevImage() {
         currentIndex = (currentIndex - 1 + kitchenImages.length) % kitchenImages.length;
         lightboxImg.src = kitchenImages[currentIndex];
-      };
+        updateCounter();
+      }
 
+      document.getElementById("close").onclick = closeLightbox;
+
+      document.getElementById("next").onclick = nextImage;
+
+      document.getElementById("prev").onclick = prevImage;
+
+      // Keyboard navigation
+      document.addEventListener("keydown", (e) => {
+        if (!isLightboxOpen) return;
+        if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+          e.preventDefault();
+          nextImage();
+        } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+          e.preventDefault();
+          prevImage();
+        } else if (e.key === "Escape") {
+          e.preventDefault();
+          closeLightbox();
+        }
+      });
+
+      // Click on background to close
       lightbox.addEventListener("click", (event) => {
         if (event.target === lightbox) {
-          lightbox.classList.add("hidden");
+          closeLightbox();
+        }
+      });
+
+      // Touch/Swipe support for mobile
+      lightbox.addEventListener("touchstart", (e) => {
+        touchStart = e.changedTouches[0].screenX;
+      });
+
+      lightbox.addEventListener("touchend", (e) => {
+        touchEnd = e.changedTouches[0].screenX;
+        const diff = touchStart - touchEnd;
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) {
+            nextImage();
+          } else {
+            prevImage();
+          }
         }
       });
 
