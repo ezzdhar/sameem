@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const nextBtn = document.getElementById("next");
   const prevBtn = document.getElementById("prev");
   let current = 0;
+  let autoSlide;
 
   if (slides.length === 0) return; 
 
@@ -23,44 +24,120 @@ document.addEventListener("DOMContentLoaded", function () {
     if (desc) desc.innerText = slides[current].dataset.desc || "";
   }
 
-  if (nextBtn) nextBtn.addEventListener("click", () => showSlide(current + 1));
-  if (prevBtn) prevBtn.addEventListener("click", () => showSlide(current - 1));
-  dots.forEach((dot, i) => dot.addEventListener("click", () => showSlide(i)));
+  function restartTimer() {
+    clearInterval(autoSlide);
+    autoSlide = setInterval(() => showSlide(current + 1), 5000);
+  }
 
-  const autoSlide = setInterval(() => showSlide(current + 1), 5000);
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      showSlide(current + 1);
+      restartTimer();
+    });
+  }
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      showSlide(current - 1);
+      restartTimer();
+    });
+  }
+  dots.forEach((dot, i) => dot.addEventListener("click", () => {
+    showSlide(i);
+    restartTimer();
+  }));
 
+  autoSlide = setInterval(() => showSlide(current + 1), 5000);
   showSlide(0); 
 });
 
+// Mobile menu & slider arrow hiding
+document.addEventListener("DOMContentLoaded", function () {
+  const menuBtn = document.getElementById("menuBtn");
+  const closeMenu = document.getElementById("closeMenu");
+  const mobileMenu = document.getElementById("mobileMenu");
 
-// customer section
-document.addEventListener("DOMContentLoaded", () => {
-    const testimonialSlides = document.querySelectorAll(".testimonial-slider .slide");
-    const leftArrow = document.querySelector(".arrow.left");
-    const rightArrow = document.querySelector(".arrow.right");
-    
-    let testimonialIndex = 0;
-    
-    function showTestimonial(i) {
-        testimonialSlides.forEach(slide => slide.classList.remove("active"));
-        testimonialSlides[i].classList.add("active");
+  if (!mobileMenu) return;
+
+  function openMenu() {
+    mobileMenu.classList.remove("hidden");
+    document.body.classList.add("menu-open");
+  }
+
+  function closeMenuHandler() {
+    mobileMenu.classList.add("hidden");
+    document.body.classList.remove("menu-open");
+  }
+
+  menuBtn?.addEventListener("click", openMenu);
+  closeMenu?.addEventListener("click", closeMenuHandler);
+
+  mobileMenu.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", closeMenuHandler);
+  });
+});
+
+// Active nav link highlighter across all pages
+document.addEventListener("DOMContentLoaded", function () {
+  const currentPath = window.location.pathname.split("/").pop() || "index.html";
+
+  document.querySelectorAll(".nav-menu a, #mobileMenu nav a").forEach(link => {
+    const href = link.getAttribute("href");
+    if (!href) return;
+    const linkPath = href.split("/").pop();
+
+    const isMatch = (linkPath === currentPath) || 
+                    ((currentPath === "" || currentPath === "/") && linkPath === "index.html") ||
+                    (currentPath === "kitchen.html" && linkPath === "windo.html");
+
+    if (isMatch) {
+      link.classList.add("active");
     }
-    
+  });
+});
+
+// Testimonials section
+document.addEventListener("DOMContentLoaded", () => {
+  const testimonialSlides = document.querySelectorAll(".testimonial-slider .slide");
+  const nextBtn = document.querySelector(".arrow.arrow-next, .arrow.left");
+  const prevBtn = document.querySelector(".arrow.arrow-prev, .arrow.right");
   
-    rightArrow?.addEventListener("click", () => {
-        testimonialIndex = (testimonialIndex + 1) % testimonialSlides.length;
-        showTestimonial(testimonialIndex);
+  if (testimonialSlides.length === 0) return;
+  
+  let testimonialIndex = 0;
+  let testInterval;
+  
+  function showTestimonial(i) {
+    testimonialIndex = (i + testimonialSlides.length) % testimonialSlides.length;
+    testimonialSlides.forEach((slide, idx) => {
+      slide.classList.toggle("active", idx === testimonialIndex);
     });
-    
-    leftArrow?.addEventListener("click", () => {
-        testimonialIndex = (testimonialIndex - 1 + testimonialSlides.length) % testimonialSlides.length;
-        showTestimonial(testimonialIndex);
-    });
-    
-    setInterval(() => {
-        testimonialIndex = (testimonialIndex + 1) % testimonialSlides.length;
-        showTestimonial(testimonialIndex);
-    }, 2000);
+  }
+  
+  function resetTestInterval() {
+    clearInterval(testInterval);
+    testInterval = setInterval(() => {
+      showTestimonial(testimonialIndex + 1);
+    }, 4500);
+  }
+  
+  // In RTL: next arrow advances to next testimonial, prev goes to previous
+  nextBtn?.addEventListener("click", () => {
+    showTestimonial(testimonialIndex + 1);
+    resetTestInterval();
+  });
+  
+  prevBtn?.addEventListener("click", () => {
+    showTestimonial(testimonialIndex - 1);
+    resetTestInterval();
+  });
+  
+  testInterval = setInterval(() => {
+    showTestimonial(testimonialIndex + 1);
+  }, 4500);
+
+  const wrapper = document.querySelector(".testimonial-wrapper");
+  wrapper?.addEventListener("mouseenter", () => clearInterval(testInterval));
+  wrapper?.addEventListener("mouseleave", () => resetTestInterval());
 });
 
 

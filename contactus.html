@@ -31,56 +31,47 @@ primary:"#ECBD60"
 
 <header class="main-header">
 <div class="header-container">
-<img src="images/logo2.png" class="h-10" alt="logo">
-
-<nav class="nav-menu      hidden lg:flex gap-10 text-white text-sm">
-<a href="index.html">الرئيسية</a>
-<a href="weare.html">من نحن</a>
-<a href="services.html">الخدمات</a>
-<a href="windo.html">المشاريع</a>
-<a href="contactus.html">تواصل معنا</a>
-</nav>
-
-<a href="contactus.html" class="hidden lg:block bg-primary text-black px-6 py-2 rounded-full text-sm">
-احجز استشارتك
+<a href="index.html">
+<img src="images/logo2.png" class="h-10" alt="Sameem Logo">
 </a>
 
-<button id="menuBtn" class="lg:hidden text-white text-2xl">
+<nav class="nav-menu hidden lg:flex gap-10 text-white text-sm">
+<a href="index.html" class="nav-link">الرئيسية</a>
+<a href="weare.html" class="nav-link">من نحن</a>
+<a href="services.html" class="nav-link">الخدمات</a>
+<a href="windo.html" class="nav-link">المشاريع</a>
+<a href="contactus.html" class="nav-link active">تواصل معنا</a>
+</nav>
+
+<button id="menuBtn" class="lg:hidden text-white text-2xl" aria-label="القائمة">
 ☰
 </button>
 </div>
 </header>
 
 <div id="mobileMenu" class="fixed inset-0 bg-black text-white hidden z-50">
-
 <div class="flex justify-between items-center p-6">
-
-<img src="images/logo2.png" class="h-8">
-
-<button id="closeMenu" class="text-3xl">×</button>
-
+<img src="images/logo2.png" class="h-8" alt="Sameem Logo">
+<button id="closeMenu" class="text-3xl" aria-label="إغلاق">×</button>
 </div>
 
 <nav class="flex flex-col items-center gap-8 mt-20 text-lg">
-<a href="index.html">الرئيسية</a>
-<a href="weare.html">من نحن</a>
-<a href="services.html">الخدمات</a>
-<a href="windo.html">المشاريع</a>
-<a href="contactus.html">تواصل معنا</a>
+<a href="index.html" class="nav-link">الرئيسية</a>
+<a href="weare.html" class="nav-link">من نحن</a>
+<a href="services.html" class="nav-link">الخدمات</a>
+<a href="windo.html" class="nav-link">المشاريع</a>
+<a href="contactus.html" class="nav-link active">تواصل معنا</a>
 </nav>
 </div>
 
-<section class="hero-slider relative  overflow-hidden   ">
+<section class="hero-slider relative overflow-hidden">
 <div class="slides">
-
-<img src="images/Pagination (3).png" class="slide active absolute inset-0 w-full  object-cover">
+<img src="images/Pagination (3).png" class="slide active absolute inset-0 w-full object-cover" alt="Background">
 </div>
 
-<div class="hero-overlay absolute inset-0  flex items-center justify-center text-center  ">
-
+<div class="hero-overlay absolute inset-0 flex items-center justify-center text-center">
 <div class="text-white max-w-2xl px-6 hero-content py-16">
-
-<h2 class="text-[35px] mb-4 leading-relaxed">تواصل معنا</h2>
+<h2 class="page-hero-title text-2xl md:text-[35px] mb-4 leading-relaxed">تواصل معنا</h2>
 
 <p class="text-gray-300 mb-8 text-[14px] leading-relaxed">نسعد دائمًا بالتواصل معكم والاستماع إلى آرائكم واستفساراتكم، حيث نحرص على تقديم أفضل تجربة ممكنة لكم. لا تترددوا في طرح أي سؤال أو طلب دعم، فنحن هنا لمساعدتكم وتلبية احتياجاتكم بكل احترافية وسرعة.</p>
 
@@ -134,101 +125,80 @@ primary:"#ECBD60"
 
 </section>
 
-<footer class="footer  mt-5">
+<footer class="footer mt-5">
   <div class="footer-overlay"></div>
   <div class="footer-container">
     <div class="footer-col logo">
-    <img src="images/logo2.png" alt="ضميم Logo" class="footer-logo">
-  <p>تصميم UPVC – جودة، عزل، وتصميم عصري لمنزلك</p>
+      <a href="index.html">
+        <img src="images/logo2.png" alt="Sameem Logo" class="footer-logo" />
+      </a>
+      <p>تصميم UPVC – جودة، عزل، وتصميم عصري لمنزلك</p>
     </div>
-   <div class="footer-col">
-  <h4>روابط سريعة</h4>
-   <ul>
+    <div class="footer-col">
+      <h4>روابط سريعة</h4>
+      <ul>
+        <li>
+          <a href="index.html">الرئيسية</a>
+        </li>
+        <li>
+          <a href="weare.html">من نحن</a>
+        </li>
+        <li>
+          <a href="services.html">الخدمات</a>
+        </li>
+        <li>
+          <a href="windo.html">المشاريع</a>
+        </li>
+        <li>
+          <a href="contactus.html">تواصل معنا</a>
+        </li>
+      </ul>
+    </div>
 
-    <li>
-      <a href="index.html">الرئيسية</a>
-    </li>
-
-    <li>
-      <a href="weare.html">من نحن</a>
-    </li>
-
-    <li>
-      <a href="services.html">الخدمات</a>
-    </li>
-
-    <li>
-      <a href="windo.html">المشاريع</a>
-    </li>
-
-    <li>
-      <a href="contactus.html">تواصل معنا</a>
-    </li>
-
-  </ul>
-</div>
-
-  
     <div class="footer-col">
       <h4>معلومات التواصل</h4>
-        <ul>
-  <li>
-    <img src="images/mobil2.png" alt="phone" />
-    <a href="tel:+201210508418">01210508418+</a>
-  </li>
-  <li>
-    <img src="images/mesage.png" alt="email" />
-    <a href="mailto:example@email.com">example@email.com</a>
-  </li>
-  <li>
-    <img src="images/location.png" alt="location" />
-    دمياط الجديدة - شارع الصحبجية - 
-    الحي الرابع 
-  </li>
-</ul>
+      <ul>
+        <li>
+          <img src="images/mobil2.png" alt="Phone" />
+          <a href="tel:+201210508418" dir="ltr" class="hover:text-primary transition">+20 121 050 8418</a>
+        </li>
+        <li>
+          <img src="images/mesage.png" alt="Email" />
+          <a href="mailto:info@sameemupvc.com" dir="ltr" class="hover:text-primary transition">info@sameemupvc.com</a>
+        </li>
+        <li class="location-item">
+          <img src="images/location.png" alt="Location" class="mt-1" />
+          <span>دمياط الجديدة - شارع الصحبجية - الحي الرابع</span>
+        </li>
+      </ul>
     </div>
-
   </div>
   <div class="footer-bottom">
-   <div class="social">
-
-  <a href="https://www.facebook.com/SameemUpvc?_rdc=1&_rdr#" target="_blank">
-    <img src="images/facebok.png" alt="Facebook">
-  </a>
-
-  <a href="https://www.tiktok.com/@sameemupvceg" target="_blank">
-    <img src="images/tiktok.png" alt="TikTok">
-  </a>
-  <!-- <a href="https://www.linkedin.com/" target="_blank">
-    <img src="images/linked.png" alt="Linkedin">
-  </a> -->
-   <a href="https://api.whatsapp.com/send?phone=201210508418&source=FB_Post&token=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNSJ9..." target="_blank">
-    <img src="images/whats.png" alt="whats">
-  </a>
-  <a href="https://www.youtube.com/@sameemupvceg" target="_blank">
-    <img src="images/youtube.png" alt="YouTube">
-  </a>
-
-</div>
-<p class="rights">© 2026 UPVC صميم. جميع الحقوق محفوظة.</p>
+    <div class="social">
+      <a
+        href="https://www.facebook.com/SameemUpvc?_rdc=1&_rdr#"
+        target="_blank"
+        aria-label="Facebook"
+      >
+        <img src="images/facebok.png" alt="Facebook" />
+      </a>
+      <a href="https://www.tiktok.com/@sameemupvceg" target="_blank" aria-label="TikTok">
+        <img src="images/tiktok.png" alt="TikTok" />
+      </a>
+      <a
+        href="https://api.whatsapp.com/send?phone=201210508418&source=FB_Post&token=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNSJ9..."
+        target="_blank"
+        aria-label="WhatsApp"
+      >
+        <img src="images/whats.png" alt="WhatsApp" />
+      </a>
+      <a href="https://www.youtube.com/@sameemupvceg" target="_blank" aria-label="YouTube">
+        <img src="images/youtube.png" alt="YouTube" />
+      </a>
+    </div>
+    <p class="rights">© 2026 UPVC صميم. جميع الحقوق محفوظة.</p>
   </div>
-
 </footer>
-
-
-
-
-
-
-<script>
-const menuBtn = document.getElementById("menuBtn")
-const mobileMenu = document.getElementById("mobileMenu")
-const closeMenu = document.getElementById("closeMenu")
-
-menuBtn.onclick = () => mobileMenu.classList.remove("hidden")
-closeMenu.onclick = () => mobileMenu.classList.add("hidden")
-
-</script>
 
 <script src="script.js"></script>
 </body>

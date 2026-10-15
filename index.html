@@ -31,7 +31,9 @@
   <body class="bg-white text-gray-800">
     <header class="main-header">
       <div class="header-container">
-        <img src="images/logo2.png" class="h-10" alt="logo" />
+        <a href="index.html">
+          <img src="images/logo2.png" class="h-10" alt="Sameem Logo" />
+        </a>
 
         <nav class="nav-menu hidden lg:flex gap-10 text-white text-sm">
           <a href="index.html" class="nav-link active">الرئيسية</a>
@@ -41,30 +43,23 @@
           <a href="contactus.html" class="nav-link">تواصل معنا</a>
         </nav>
 
-        <a
-          href="contactus.html"
-          class="hidden lg:block bg-primary text-black px-6 py-2 rounded-full text-sm"
-        >
-          احجز استشارتك
-        </a>
-
-        <button id="menuBtn" class="lg:hidden text-white text-2xl">☰</button>
+        <button id="menuBtn" class="lg:hidden text-white text-2xl" aria-label="القائمة">☰</button>
       </div>
     </header>
 
     <div id="mobileMenu" class="fixed inset-0 bg-black text-white hidden z-50">
       <div class="flex justify-between items-center p-6">
-        <img src="images/logo2.png" class="h-8" />
+        <img src="images/logo2.png" class="h-8" alt="Sameem Logo" />
 
-        <button id="closeMenu" class="text-3xl">×</button>
+        <button id="closeMenu" class="text-3xl" aria-label="إغلاق">×</button>
       </div>
 
       <nav class="flex flex-col items-center gap-8 mt-20 text-lg">
-        <a href="index.html">الرئيسية</a>
-        <a href="weare.html">من نحن</a>
-        <a href="services.html">الخدمات</a>
-        <a href="windo.html">المشاريع</a>
-        <a href="contactus.html">تواصل معنا</a>
+        <a href="index.html" class="nav-link active">الرئيسية</a>
+        <a href="weare.html" class="nav-link">من نحن</a>
+        <a href="services.html" class="nav-link">الخدمات</a>
+        <a href="windo.html" class="nav-link">المشاريع</a>
+        <a href="contactus.html" class="nav-link">تواصل معنا</a>
       </nav>
     </div>
 
@@ -102,8 +97,16 @@
         </div>
       </div>
 
-      <button id="next" class="slider-arrow left-arrow">❯</button>
-      <button id="prev" class="slider-arrow right-arrow">❮</button>
+      <button id="next" class="slider-arrow left-arrow" aria-label="التالي">
+        <svg viewBox="0 0 24 24">
+          <polyline points="15 18 9 12 15 6"></polyline>
+        </svg>
+      </button>
+      <button id="prev" class="slider-arrow right-arrow" aria-label="السابق">
+        <svg viewBox="0 0 24 24">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
 
       <div class="slider-dots">
         <span class="dot active"></span>
@@ -534,7 +537,11 @@
       </div>
 
       <div class="testimonial-wrapper">
-        <button class="arrow left">&#10095;</button>
+        <button class="arrow arrow-prev" aria-label="السابق">
+          <svg viewBox="0 0 24 24">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
 
         <div class="testimonial-container">
           <div class="gold-shape"></div>
@@ -542,7 +549,7 @@
           <div class="testimonial-slider">
             <div class="slide active">
               <div class="card">
-                <div class="avatar"><img src="images/user5.png" /></div>
+                <div class="avatar"><img src="images/avatar-placeholder.svg" alt="User Avatar" /></div>
                 <h3>Mohamed Nasser</h3>
                 <span>UI | UX Designer</span>
                 <p>
@@ -554,7 +561,7 @@
 
             <div class="slide">
               <div class="card">
-                <div class="avatar"><img src="images/user5.png" /></div>
+                <div class="avatar"><img src="images/avatar-placeholder.svg" alt="User Avatar" /></div>
                 <h3>Ahmed Ali</h3>
                 <span>Engineer</span>
                 <p>جودة رائعة وعزل صوتي ممتاز. فرق واضح داخل المنزل.</p>
@@ -563,7 +570,7 @@
 
             <div class="slide">
               <div class="card">
-                <div class="avatar"><img src="images/user5.png" /></div>
+                <div class="avatar"><img src="images/avatar-placeholder.svg" alt="User Avatar" /></div>
                 <h3>Sara Mohamed</h3>
                 <span>Architect</span>
                 <p>التصميم رائع والتركيب احترافي. أنصح بهم.</p>
@@ -572,7 +579,7 @@
 
             <div class="slide">
               <div class="card">
-                <div class="avatar"><img src="images/user5.png" /></div>
+                <div class="avatar"><img src="images/avatar-placeholder.svg" alt="User Avatar" /></div>
                 <h3>Fatma Hassan</h3>
                 <span>Project Manager</span>
                 <p>
@@ -583,7 +590,11 @@
           </div>
         </div>
 
-        <button class="arrow right">&#10094;</button>
+        <button class="arrow arrow-next" aria-label="التالي">
+          <svg viewBox="0 0 24 24">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
       </div>
     </section>
 
@@ -592,8 +603,8 @@
 
       <div class="footer-container">
         <div class="footer-col logo">
-          <img src="images/logo2.png" alt="ضميم Logo" class="footer-logo" />
-          <p>تصميم UPVC – جودة، عزل، وتصميم عصري لمنزلك</p>
+          <img src="images/logo2.png" alt="Sameem Logo" class="footer-logo" />
+          <p>صميم UPVC – جودة، عزل، وتصميم عصري لمنزلك</p>
         </div>
 
         <div class="footer-col">
@@ -624,21 +635,20 @@
 
         <div class="footer-col">
           <h4>معلومات التواصل</h4>
-       <ul>
-  <li>
-    <img src="images/mobil2.png" alt="phone" />
-    <a href="tel:+201210508418">01210508418+</a>
-  </li>
-  <li>
-    <img src="images/mesage.png" alt="email" />
-    <a href="mailto:example@email.com">example@email.com</a>
-  </li>
-  <li>
-    <img src="images/location.png" alt="location" />
-    دمياط الجديدة - شارع الصحبجية - 
-    الحي الرابع 
-  </li>
-</ul>
+          <ul>
+            <li>
+              <img src="images/mobil2.png" alt="Phone" />
+              <a href="tel:+201210508418" dir="ltr" class="hover:text-primary transition">+20 121 050 8418</a>
+            </li>
+            <li>
+              <img src="images/mesage.png" alt="Email" />
+              <a href="mailto:info@sameemupvc.com" dir="ltr" class="hover:text-primary transition">info@sameemupvc.com</a>
+            </li>
+            <li class="location-item">
+              <img src="images/location.png" alt="Location" class="mt-1" />
+              <span>دمياط الجديدة - شارع الصحبجية - الحي الرابع</span>
+            </li>
+          </ul>
         </div>
       </div>
 
@@ -647,23 +657,22 @@
           <a
             href="https://www.facebook.com/SameemUpvc?_rdc=1&_rdr#"
             target="_blank"
+            aria-label="Facebook"
           >
             <img src="images/facebok.png" alt="Facebook" />
           </a>
 
-          <a href="https://www.tiktok.com/@sameemupvceg" target="_blank">
+          <a href="https://www.tiktok.com/@sameemupvceg" target="_blank" aria-label="TikTok">
             <img src="images/tiktok.png" alt="TikTok" />
           </a>
-          <!-- <a href="https://www.linkedin.com/" target="_blank">
-    <img src="images/linked.png" alt="Linkedin">
-  </a> -->
           <a
             href="https://api.whatsapp.com/send?phone=201210508418&source=FB_Post&token=eyJhbGciOiJFUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6IjEyNSJ9..."
             target="_blank"
+            aria-label="WhatsApp"
           >
-            <img src="images/whats.png" alt="whats" />
+            <img src="images/whats.png" alt="WhatsApp" />
           </a>
-          <a href="https://www.youtube.com/@sameemupvceg" target="_blank">
+          <a href="https://www.youtube.com/@sameemupvceg" target="_blank" aria-label="YouTube">
             <img src="images/youtube.png" alt="YouTube" />
           </a>
         </div>
@@ -671,14 +680,6 @@
       </div>
     </footer>
 
-    <script>
-      const menuBtn = document.getElementById("menuBtn");
-      const mobileMenu = document.getElementById("mobileMenu");
-      const closeMenu = document.getElementById("closeMenu");
-
-      menuBtn.onclick = () => mobileMenu.classList.remove("hidden");
-      closeMenu.onclick = () => mobileMenu.classList.add("hidden");
-    </script>
     <script src="script.js"></script>
   </body>
 </html>
