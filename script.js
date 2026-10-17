@@ -425,3 +425,117 @@ document.addEventListener("DOMContentLoaded", function () {
 
       renderKitchenGallery();
     });
+
+// Contact Form Submission Handling
+document.addEventListener("DOMContentLoaded", function () {
+  const contactForm = document.getElementById("contactForm");
+  if (!contactForm) return;
+
+  const submitBtn = document.getElementById("submitBtn");
+  const btnText = document.getElementById("btnText");
+  const btnSpinner = document.getElementById("btnSpinner");
+  const formStatus = document.getElementById("formStatus");
+
+  function setStatus(type, message) {
+    if (!formStatus) return;
+    formStatus.className = "p-4 rounded-xl text-center text-sm font-medium transition-all block";
+    if (type === "success") {
+      formStatus.classList.add("bg-green-50", "text-green-800", "border", "border-green-200");
+    } else if (type === "error") {
+      formStatus.classList.add("bg-red-50", "text-red-800", "border", "border-red-200");
+    } else if (type === "info") {
+      formStatus.classList.add("bg-amber-50", "text-amber-800", "border", "border-amber-200");
+    }
+    formStatus.innerHTML = message;
+    formStatus.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  }
+
+  function setLoading(loading) {
+    if (!submitBtn) return;
+    submitBtn.disabled = loading;
+    if (loading) {
+      submitBtn.classList.add("opacity-75", "cursor-not-allowed");
+      if (btnText) btnText.textContent = "جاري الإرسال...";
+      if (btnSpinner) btnSpinner.classList.remove("hidden");
+    } else {
+      submitBtn.classList.remove("opacity-75", "cursor-not-allowed");
+      if (btnText) btnText.textContent = "ابدأ مشروعك الآن";
+      if (btnSpinner) btnSpinner.classList.add("hidden");
+    }
+  }
+
+  contactForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const firstName = document.getElementById("firstName")?.value.trim() || "";
+    const lastName = document.getElementById("lastName")?.value.trim() || "";
+    const email = document.getElementById("email")?.value.trim() || "";
+    const phone = document.getElementById("phone")?.value.trim() || "";
+    const message = document.getElementById("message")?.value.trim() || "";
+
+    if (!firstName || !lastName || !email || !phone || !message) {
+      setStatus("error", "⚠️ يرجى ملء جميع الحقول المطلوبة قبل الإرسال.");
+      return;
+    }
+
+    setLoading(true);
+    setStatus("info", "جاري إرسال رسالتك، يرجى الانتظار...");
+
+    const payload = {
+      "الاسم بالكامل": `${firstName} ${lastName}`,
+      "الاسم الأول": firstName,
+      "الاسم الأخير": lastName,
+      "البريد الإلكتروني": email,
+      "رقم الهاتف": phone,
+      "الرسالة": message,
+      _subject: `طلب تواصل جديد من موقع Sameem UPVC: ${firstName} ${lastName}`,
+      _template: "table",
+      _captcha: "false"
+    };
+
+    try {
+      // FormSubmit endpoint sends directly to info@sameemupvc.com
+      const endpoint = "https://formsubmit.co/ajax/info@sameemupvc.com";
+
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await response.json().catch(() => ({}));
+
+      if (response.ok && (data.success === "true" || data.success === true || data.status === "success")) {
+        setStatus(
+          "success",
+          "🎉 <strong>تم استلام رسالتك بنجاح!</strong><br>شكراً لتواصلك مع صميم UPVC، سنقوم بالرد عليك عبر البريد الإلكتروني أو الهاتف في أقرب وقت."
+        );
+        contactForm.reset();
+      } else {
+        const msg = String(data.message || "");
+        if (msg.toLowerCase().includes("activate") || msg.toLowerCase().includes("activation")) {
+          setStatus(
+            "info",
+            "📧 <strong>تنبيه تفعيل:</strong> تم إرسال رسالة تفعيل إلى <b>info@sameemupvc.com</b> لأول مرة.<br>يرجى فتح بريد Hostinger والضغط على رابط التفعيل (Activate Form) لمرة واحدة فقط لتصلك جميع الرسائل القادمة تلقائياً."
+          );
+        } else {
+          setStatus(
+            "error",
+            `⚠️ تعذر إرسال الرسالة تلقائياً. يمكنك التواصل معنا مباشرة عبر <a href="https://api.whatsapp.com/send?phone=201210508418" target="_blank" class="underline font-bold text-[#B18E48]">واتساب</a> أو الاتصال على <a href="tel:+201210508418" class="underline font-bold text-[#B18E48]" dir="ltr">+20 121 050 8418</a>.`
+          );
+        }
+      }
+    } catch (err) {
+      console.error("Form submission error:", err);
+      setStatus(
+        "error",
+        `⚠️ حدث خطأ في الاتصال. يمكنك مراسلتنا مباشرة على <a href="mailto:info@sameemupvc.com" class="underline font-bold text-[#B18E48]">info@sameemupvc.com</a> أو عبر <a href="https://api.whatsapp.com/send?phone=201210508418" target="_blank" class="underline font-bold text-[#B18E48]">واتساب</a>.`
+      );
+    } finally {
+      setLoading(false);
+    }
+  });
+});

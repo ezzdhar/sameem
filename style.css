@@ -1097,6 +1097,17 @@ margin-bottom:70px;
   flex-shrink: 0;
 }
 
+.footer-col ul li a {
+  color: #ccc;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  word-break: break-word;
+}
+
+.footer-col ul li a:hover {
+  color: #ECBD60;
+}
+
 .logo h3 {
   color: #E6B45E;
   font-size: 22px;
