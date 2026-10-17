@@ -426,7 +426,7 @@ document.addEventListener("DOMContentLoaded", function () {
       renderKitchenGallery();
     });
 
-// Contact Form Submission Handling
+// Contact Form Validation and Submission Handling
 document.addEventListener("DOMContentLoaded", function () {
   const contactForm = document.getElementById("contactForm");
   if (!contactForm) return;
@@ -435,6 +435,135 @@ document.addEventListener("DOMContentLoaded", function () {
   const btnText = document.getElementById("btnText");
   const btnSpinner = document.getElementById("btnSpinner");
   const formStatus = document.getElementById("formStatus");
+
+  const fields = {
+    firstName: {
+      input: document.getElementById("firstName"),
+      error: document.getElementById("firstNameError"),
+      validate: (val) => {
+        val = val.trim();
+        if (!val) return "يرجى إدخال الاسم الأول.";
+        if (val.length < 2) return "الاسم الأول يجب أن يحتوي على حرفين على الأقل.";
+        if (!/^[A-Za-z\u0600-\u06FF\s]+$/.test(val)) return "الاسم الأول يجب أن يحتوي على حروف فقط بدون أرقام أو رموز.";
+        return "";
+      }
+    },
+    lastName: {
+      input: document.getElementById("lastName"),
+      error: document.getElementById("lastNameError"),
+      validate: (val) => {
+        val = val.trim();
+        if (!val) return "يرجى إدخال الاسم الأخير.";
+        if (val.length < 2) return "الاسم الأخير يجب أن يحتوي على حرفين على الأقل.";
+        if (!/^[A-Za-z\u0600-\u06FF\s]+$/.test(val)) return "الاسم الأخير يجب أن يحتوي على حروف فقط بدون أرقام أو رموز.";
+        return "";
+      }
+    },
+    email: {
+      input: document.getElementById("email"),
+      error: document.getElementById("emailError"),
+      validate: (val) => {
+        val = val.trim();
+        if (!val) return "يرجى إدخال البريد الإلكتروني.";
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailRegex.test(val)) return "صيغة البريد الإلكتروني غير صحيحة (مثال: name@example.com).";
+        return "";
+      }
+    },
+    phone: {
+      input: document.getElementById("phone"),
+      error: document.getElementById("phoneError"),
+      validate: (val) => {
+        val = val.trim().replace(/[\s-]/g, "");
+        if (!val) return "يرجى إدخال رقم الهاتف.";
+        // Egyptian mobile (010, 011, 012, 015) or standard phone format 10-14 digits with optional +20
+        const phoneRegex = /^(01[0125][0-9]{8}|(\+?20|0020)?1[0125][0-9]{8}|[0-9]{10,14})$/;
+        if (!phoneRegex.test(val)) return "يرجى إدخال رقم هاتف صحيح (مثال: 01012345678).";
+        return "";
+      }
+    },
+    message: {
+      input: document.getElementById("message"),
+      error: document.getElementById("messageError"),
+      validate: (val) => {
+        val = val.trim();
+        if (!val) return "يرجى كتابة رسالتك أو تفاصيل استفسارك.";
+        if (val.length < 10) return "يجب أن تحتوي الرسالة على 10 أحرف على الأقل لتوضيح طلبك.";
+        return "";
+      }
+    }
+  };
+
+  function showFieldError(key, message) {
+    const field = fields[key];
+    if (!field || !field.input) return;
+    field.input.classList.add("input-error");
+    field.input.classList.remove("input-success");
+    if (field.error) {
+      field.error.innerHTML = `<span>⚠️</span> <span>${message}</span>`;
+      field.error.classList.remove("hidden");
+    }
+  }
+
+  function clearFieldError(key) {
+    const field = fields[key];
+    if (!field || !field.input) return;
+    field.input.classList.remove("input-error");
+    field.input.classList.add("input-success");
+    if (field.error) {
+      field.error.textContent = "";
+      field.error.classList.add("hidden");
+    }
+  }
+
+  function resetFieldState(key) {
+    const field = fields[key];
+    if (!field || !field.input) return;
+    field.input.classList.remove("input-error", "input-success");
+    if (field.error) {
+      field.error.textContent = "";
+      field.error.classList.add("hidden");
+    }
+  }
+
+  function validateSingleField(key, isTouched = true) {
+    const field = fields[key];
+    if (!field || !field.input) return true;
+    const value = field.input.value;
+    const errorMsg = field.validate(value);
+    if (errorMsg) {
+      if (isTouched) {
+        showFieldError(key, errorMsg);
+      }
+      return false;
+    } else {
+      if (value.trim()) {
+        clearFieldError(key);
+      } else {
+        resetFieldState(key);
+      }
+      return true;
+    }
+  }
+
+  // Attach live input & blur events to each field
+  Object.keys(fields).forEach((key) => {
+    const field = fields[key];
+    if (!field.input) return;
+
+    let touched = false;
+
+    field.input.addEventListener("blur", function () {
+      touched = true;
+      validateSingleField(key, true);
+    });
+
+    field.input.addEventListener("input", function () {
+      if (touched || field.input.classList.contains("input-error")) {
+        validateSingleField(key, true);
+      }
+    });
+  });
 
   function setStatus(type, message) {
     if (!formStatus) return;
@@ -467,16 +596,37 @@ document.addEventListener("DOMContentLoaded", function () {
   contactForm.addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    const firstName = document.getElementById("firstName")?.value.trim() || "";
-    const lastName = document.getElementById("lastName")?.value.trim() || "";
-    const email = document.getElementById("email")?.value.trim() || "";
-    const phone = document.getElementById("phone")?.value.trim() || "";
-    const message = document.getElementById("message")?.value.trim() || "";
+    // Validate all fields
+    let isValid = true;
+    let firstInvalidInput = null;
 
-    if (!firstName || !lastName || !email || !phone || !message) {
-      setStatus("error", "⚠️ يرجى ملء جميع الحقول المطلوبة قبل الإرسال.");
+    Object.keys(fields).forEach((key) => {
+      const fieldValid = validateSingleField(key, true);
+      if (!fieldValid) {
+        isValid = false;
+        if (!firstInvalidInput && fields[key].input) {
+          firstInvalidInput = fields[key].input;
+        }
+      }
+    });
+
+    if (!isValid) {
+      setStatus("error", "⚠️ يرجى تصحيح الأخطاء الموضحة أدناه قبل الإرسال.");
+      if (firstInvalidInput) {
+        firstInvalidInput.focus();
+        firstInvalidInput.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
       return;
     }
+
+    // Hide any previous status
+    if (formStatus) formStatus.classList.add("hidden");
+
+    const firstName = fields.firstName.input.value.trim();
+    const lastName = fields.lastName.input.value.trim();
+    const email = fields.email.input.value.trim();
+    const phone = fields.phone.input.value.trim();
+    const message = fields.message.input.value.trim();
 
     setLoading(true);
     setStatus("info", "جاري إرسال رسالتك، يرجى الانتظار...");
@@ -494,7 +644,6 @@ document.addEventListener("DOMContentLoaded", function () {
     };
 
     try {
-      // FormSubmit endpoint sends directly to info@sameemupvc.com
       const endpoint = "https://formsubmit.co/ajax/info@sameemupvc.com";
 
       const response = await fetch(endpoint, {
@@ -514,6 +663,7 @@ document.addEventListener("DOMContentLoaded", function () {
           "🎉 <strong>تم استلام رسالتك بنجاح!</strong><br>شكراً لتواصلك مع صميم UPVC، سنقوم بالرد عليك عبر البريد الإلكتروني أو الهاتف في أقرب وقت."
         );
         contactForm.reset();
+        Object.keys(fields).forEach((key) => resetFieldState(key));
       } else {
         const msg = String(data.message || "");
         if (msg.toLowerCase().includes("activate") || msg.toLowerCase().includes("activation")) {

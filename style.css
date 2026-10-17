@@ -1706,3 +1706,37 @@ font-size:26px;
   }
 }
 
+/* Form Validation Styles */
+.input-error {
+  border-color: #ef4444 !important;
+  background-color: #fef2f2 !important;
+  box-shadow: 0 0 0 1px #ef4444 !important;
+}
+
+.input-success {
+  border-color: #10b981 !important;
+  background-color: #f0fdf4 !important;
+}
+
+.field-error {
+  animation: fieldFadeIn 0.25s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.field-error.hidden {
+  display: none !important;
+}
+
+@keyframes fieldFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
