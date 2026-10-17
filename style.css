@@ -37,6 +37,7 @@ body {
   border:1px solid rgba(70,70,70,0.6);
   border-radius:999px;
   backdrop-filter:blur(6px);
+  flex-direction: row-reverse;
 }
 
 .logo {
@@ -48,7 +49,7 @@ body {
   gap:50px;
   font-size:14px;
   color:white;
-  padding:0 5rem;
+  padding:0;
 }
 
 .nav-link {
@@ -574,12 +575,18 @@ body.menu-open .slider-arrow,
 .process-image {width:88%;}
 .process-image img {width:100%; border-radius:12px;}
 
-.process-steps {display:flex; flex-direction:column; gap:22px;}
+.process-steps {
+  display:flex;
+  flex-direction:column;
+  gap:22px;
+  text-align: right;
+}
 
 .process-step {
   display:flex;
   gap:18px;
   align-items:flex-start;
+  text-align: right;
   opacity:0;
   transform:translateY(30px);
   animation:fadeUp .8s forwards;
@@ -600,6 +607,11 @@ body.menu-open .slider-arrow,
   align-items:center;
   justify-content:center;
   font-weight:700;
+  flex-shrink: 0;
+}
+
+.process-step > div {
+  text-align: right;
 }
 
 .process-step h3 {
@@ -614,31 +626,49 @@ body.menu-open .slider-arrow,
   font-size:14px;
   color:#777;
   line-height:1.6;
+  text-align: right;
 }
 
 @media(max-width:900px){
-  .process-grid{grid-template-columns:1fr; text-align:center;}
-  .process-image{order:2;
-  
-   width: 65%;
-   margin: auto;
+  .process-grid{
+    grid-template-columns:1fr;
   }
-  .process-content{order:1;
-   
+  .process-image{
+    order:2;
+    width: 65%;
+    margin: auto;
   }
-  .process-step{justify-content:center;}
+  .process-content{
+    order:1;
+  }
+  .process-steps {
+    max-width: 480px;
+    margin: 0 auto;
+    width: 100%;
+    text-align: right;
+  }
+  .process-step{
+    justify-content: flex-start;
+    text-align: right;
+  }
+  .process-step h3,
+  .process-step p {
+    text-align: right;
+  }
 }
 
 @media(max-width:500px){
-  .process-content h2{font-size:26px;
-  
+  .process-content h2{
+    font-size:26px;
   }
   .process-step p {
-    font-size: 11px;
-}
-.process-step h3 {
-  font-size:17px;
-}
+    font-size: 12px;
+    text-align: right;
+  }
+  .process-step h3 {
+    font-size:17px;
+    text-align: right;
+  }
 }
 
 .comfort-section {
@@ -1068,9 +1098,20 @@ margin-bottom:70px;
   gap: 40px;
 }
 
+.footer-col.logo p {
+  margin-top: 10px;
+  margin-bottom: 12px;
+}
+
 .footer-col h4 {
   color: #E6B45E;
   margin-bottom: 15px;
+}
+
+.footer-col.footer-quick-links,
+.footer-quick-links,
+.quick-links-title {
+  margin-top: 28px;
 }
 
 .footer-col ul {
@@ -1142,6 +1183,11 @@ margin-bottom:70px;
     flex-direction: column;
     align-items: center;
     text-align: center;
+  }
+
+  .footer-col.footer-quick-links,
+  .footer-quick-links {
+    margin-top: 36px;
   }
 
   .footer-bottom {
